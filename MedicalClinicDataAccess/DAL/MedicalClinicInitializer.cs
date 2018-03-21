@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 namespace MedicalClinicDataAccess.DAL
 {
-    public class MedicalClinicInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<MedicalClinicContext>
-    //public class MedicalClinicInitializer : System.Data.Entity.DropCreateDatabaseAlways<MedicalClinicContext>
+    public class MedicalClinicInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<MedicalClinicContext>    
     {
         protected override void Seed(MedicalClinicContext context)
         {
