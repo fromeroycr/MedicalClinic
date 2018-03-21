@@ -13,7 +13,7 @@ namespace MedicalClinicRepositories.Interfaces
         IEnumerable<Patient> GetPatients();
         Patient GetPatient(int idPatient);
         ResponseModel CreatePatient(Patient patient);
-        ResponseModel UpdatePatient(int idPatient, Patient patient);
+        ResponseModel UpdatePatient(Patient patient);
         ResponseModel DeletePatient(int idPatient);
     }
 }

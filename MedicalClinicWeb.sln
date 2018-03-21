@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalClinicApi", "Medical
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalClinic.Common", "MedicalClinic.Common\MedicalClinic.Common.csproj", "{1EA2F41A-2692-45BF-AC32-13EA7E5ADCA4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{66647CBD-FCA5-46EC-A9D1-55A6B521724C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalClinicWeb", "MedicalClinicWeb\MedicalClinicWeb.csproj", "{15020E4C-C1AF-46F3-B0D9-778111437DC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{1EA2F41A-2692-45BF-AC32-13EA7E5ADCA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EA2F41A-2692-45BF-AC32-13EA7E5ADCA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EA2F41A-2692-45BF-AC32-13EA7E5ADCA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15020E4C-C1AF-46F3-B0D9-778111437DC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15020E4C-C1AF-46F3-B0D9-778111437DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15020E4C-C1AF-46F3-B0D9-778111437DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15020E4C-C1AF-46F3-B0D9-778111437DC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

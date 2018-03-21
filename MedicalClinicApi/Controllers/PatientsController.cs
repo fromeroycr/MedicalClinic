@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MedicalClinic.Common;
+using MedicalClinicApi.Models;
 using MedicalClinicDataAccess.DAL;
 using MedicalClinicDataAccess.Models;
 using MedicalClinicRepositories.Interfaces;
@@ -44,37 +45,17 @@ namespace MedicalClinicApi.Controllers
             return Ok(patient);
         }
 
-        // PUT: api/Patients/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPatient(int id, Patient patient)
+        [HttpPost]
+        [Route("patients/PutPatient/{PatientID}")]
+        public string PutPatient(int patientID, [FromBody] Patient patient)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var response = _patientsRepository.UpdatePatient(patient);
 
-            ResponseModel response = new ResponseModel();
-
-            try
-            {
-                response = _patientsRepository.UpdatePatient(id, patient);
-
-                
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PatientExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            // return StatusCode(HttpStatusCode.NoContent);
-            return Ok(response);
+            if (response.Result == OperationResult.Sucessful)
+                return "Patient Updated";
+            else
+                return "Failed Update";
+            
         }
 
         // POST: api/Patients

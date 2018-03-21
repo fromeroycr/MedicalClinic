@@ -74,11 +74,11 @@ namespace MedicalClinicRepositories.Implementations
             return db.Patients.ToList();
         }
 
-        public ResponseModel UpdatePatient(int idPatient, Patient patientUpdated)
+        public ResponseModel UpdatePatient(Patient patientUpdated)
         {
             try
             {
-                Patient patient = db.Patients.Find(idPatient);
+                Patient patient = db.Patients.Find(patientUpdated.PatientID);
                 patient.Age = patientUpdated.Age;
                 patient.Appointments = patientUpdated.Appointments;
                 patient.Gender = patientUpdated.Gender;

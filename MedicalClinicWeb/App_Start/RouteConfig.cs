@@ -15,8 +15,8 @@ namespace MedicalClinicWeb
 
             routes.MapRoute(
                 name: "Default",
-                //url: "{controller}/{action}/{id}",
-                url: "{*anything}",
+                url: "{controller}/{action}/{id}",
+                //url: "{*anything}",
                 defaults: new { controller = "Patients", action = "Index", id = UrlParameter.Optional }
             );
         }
