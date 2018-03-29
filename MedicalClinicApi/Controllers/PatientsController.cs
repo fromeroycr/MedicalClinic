@@ -1,21 +1,22 @@
-﻿using System;
+﻿using MedicalClinic.Common;
+using MedicalClinicApi.Models;
+using MedicalClinicDataAccess.DAL;
+using MedicalClinicDataAccess.Models;
+using MedicalClinicRepositories.Interfaces;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
-using MedicalClinic.Common;
-using MedicalClinicApi.Models;
-using MedicalClinicDataAccess.DAL;
-using MedicalClinicDataAccess.Models;
-using MedicalClinicRepositories.Interfaces;
+
 
 namespace MedicalClinicApi.Controllers
 {
+    [EnableCors(origins: "http://localhost:49715", headers: "*", methods: "*")]
     public class PatientsController : ApiController
     {
         private MedicalClinicContext db = new MedicalClinicContext();
@@ -26,14 +27,43 @@ namespace MedicalClinicApi.Controllers
             _patientsRepository = patientsRepository;
         }
 
-        // GET: api/Patients
-        public IEnumerable<Patient> GetPatients()
+        // GET: api/Patients        
+        [HttpGet]
+        [Route("api/Patients/GetPatients")]
+        public List<PatientModelViewModel> GetPatients()
         {
-            return _patientsRepository.GetPatients();
+            var result = (from patient in _patientsRepository.GetPatients()
+                    select new PatientModelViewModel
+                    {
+                        PatientID = patient.PatientID,
+                        Age = patient.Age,
+                        Name = patient.Name
+                    }
+                    );
+
+            return result.ToList();
         }
 
-        // GET: api/Patients/5
-        [ResponseType(typeof(Patient))]
+        /*
+        [HttpGet]
+        [Route("api/Patients/GetPatients")]
+        public HttpResponseMessage GetPatients()
+        {
+            var result = (from patient in _patientsRepository.GetPatients()
+                          select new PatientModelViewModel
+                          {
+                              PatientID = patient.PatientID,
+                              Age = patient.Age,
+                              Name = patient.Name
+                          }
+                    );
+
+            return Request.CreateResponse(HttpStatusCode.OK, "GetPatients Successfully");
+        }*/
+
+        [HttpGet]
+        [Route("api/Patients/GetPatient/{id}")]
+        [ResponseType(typeof(PatientModelViewModel))]
         public IHttpActionResult GetPatient(int id)
         {
             Patient patient = _patientsRepository.GetPatient(id);
@@ -42,12 +72,20 @@ namespace MedicalClinicApi.Controllers
                 return NotFound();
             }
 
+            var result = new PatientModelViewModel
+            {
+                Age = patient.Age,
+                Name = patient.Name,
+                PatientID = patient.PatientID
+
+            };
+                
             return Ok(patient);
         }
 
-        [HttpPost]
-        [Route("patients/PutPatient/{PatientID}")]
-        public string PutPatient(int patientID, [FromBody] Patient patient)
+        [HttpPut]
+        [Route("api/Patients/PutPatient")]
+        public string PutPatient([FromBody] Patient patient)
         {
             var response = _patientsRepository.UpdatePatient(patient);
 
@@ -55,10 +93,9 @@ namespace MedicalClinicApi.Controllers
                 return "Patient Updated";
             else
                 return "Failed Update";
-            
         }
 
-        // POST: api/Patients
+        // POST: api/Patient
         [ResponseType(typeof(Patient))]
         public IHttpActionResult PostPatient(Patient patient)
         {

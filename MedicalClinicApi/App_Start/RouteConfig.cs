@@ -16,7 +16,7 @@ namespace MedicalClinicApi
             routes.MapRoute(
                 name: "Api",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Patients", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

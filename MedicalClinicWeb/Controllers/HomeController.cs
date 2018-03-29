@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedicalClinicDataAccess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,6 +26,20 @@ namespace MedicalClinicWeb.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Update()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public string UpdateEmployee(Patient patient)
+        {
+            
+              return "Hello World";
+           
         }
     }
 }

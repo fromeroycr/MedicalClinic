@@ -6,10 +6,9 @@
 
     <title>@ViewBag.Title</title>
 
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Content/Angular/Module.js"></script>
-    <script src="~/Content/Angular/Service.js"></script>
-    <script src="~/Content/Angular/Controller.js"></script>
+    <!-- <script src="~/Scripts/angular.min.js"></script> -->
+    
+    
     @Styles.Render("~/Content/css")
     <style>
     </style>
@@ -19,6 +18,11 @@
 
     @Scripts.Render("~/bundles/jquery")
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-route.js"></script>
+    <script src="~/Content/Angular/Module.js"></script>
+    <script src="~/Content/Angular/Service.js"></script>
+    <script src="~/Content/Angular/Controller.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

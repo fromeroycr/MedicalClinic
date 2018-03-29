@@ -1,33 +1,35 @@
 ﻿app.service("myService", function ($http) {
 
     var PatientsAPIUrl = 'http://localhost:50186/api/Patients';
+    //var PatientsAPIUrl = 'http://localhost:49715/Patients';
 
-    //get All Patients
-    
+    //get All Patients    
     this.getPatients = function () {        
-        return $http.get(PatientsAPIUrl);
+        
+        var response = $http.get('http://localhost:50186/api/Patients/GetPatients');
+        console.log(response);        
+
+        return response;
     };
     
 
     // get Patient By Id
     this.getPatient = function (PatientID) {
 
-        var urlString = PatientsAPIUrl + "/" + PatientID;
-        return $http.get(urlString);
-        
+        var urlString = 'http://localhost:50186/api/Patients/GetPatient' + "/" + PatientID;
+        return $http.get(urlString);        
+
     }
 
     // Update Patient
     this.updatePatient = function (Patient) {
-
-        var serviceUrl = PatientsAPIUrl + "/PutPatient/" + Patient.PatientID;
-
+        
         var response = $http({
-            method: "post",
-            url: serviceUrl,
-            data: JSON.stringify(Patient),
-            dataType: "json"
+            method: "put",            
+            url: 'http://localhost:50186/api/patients/PutPatient/',
+            data: JSON.stringify(Patient)
         });
+        
         return response;
     }
 
