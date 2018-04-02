@@ -29,7 +29,13 @@
                     {{patient.Name}}
                 </td>
                 <td>
-                    {{patient.Gender}}
+                    <span ng-if="patient.Gender == '0'">
+                        Male
+                    </span>
+                    <span ng-if="patient.Gender == '1'">
+                        Female
+                    </span>
+                    
                 </td>
                 <td>
                     {{patient.Age}}
@@ -62,7 +68,7 @@
                 <td><b>Gender</b></td>
                 <td>
                     <select ng-model="selectedGender">
-                        <option ng-repeat="g in Genders" value="{{g.id}}"> {{g.description}}</option>
+                        <option ng-repeat="g in Genders" value="{{g.value}}"> {{g.name}}</option>
                     </select>
                 </td>
             </tr>

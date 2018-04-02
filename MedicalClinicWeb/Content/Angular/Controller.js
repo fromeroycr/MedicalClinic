@@ -3,8 +3,8 @@
     $scope.divPatient = false;
     
     $scope.Genders = [ 
-        { id: "0", description: "Masculino" },
-        { id: "1", description: "Femenino" }
+        { value: "0", name: "Masculino" },
+        { value: "1", name: "Femenino" }
     ];
 
     GetAllPatient();
@@ -42,8 +42,7 @@
             $scope.PatientName = Patient.Name;
             $scope.PatientAge = Patient.Age;
             debugger;
-            $scope.selectedGender = Patient.Gender;
-            //$scope.selectedGender = $scope.Genders[0];
+            $scope.selectedGender = String(Patient.Gender);            
             $scope.Action = "Update";
             $scope.divPatient = true;
         },
