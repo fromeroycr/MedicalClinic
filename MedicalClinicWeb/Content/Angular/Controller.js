@@ -7,8 +7,6 @@
         { id: "1", description: "Femenino" }
     ];
 
-    $scope.selectedGender = 1;
-
     GetAllPatient();
     //To Get All Records 
     
@@ -43,7 +41,9 @@
             $scope.PatientID = Patient.PatientID;
             $scope.PatientName = Patient.Name;
             $scope.PatientAge = Patient.Age;
-            $scope.PatientGender = Patient.Gender;
+            debugger;
+            $scope.selectedGender = Patient.Gender;
+            //$scope.selectedGender = $scope.Genders[0];
             $scope.Action = "Update";
             $scope.divPatient = true;
         },
@@ -59,7 +59,8 @@
             Name: $scope.PatientName,
             Gender: $scope.selectedGender,
             Age: $scope.PatientAge
-        };
+        };        
+
         var getAction = $scope.Action;
 
         if (getAction == "Update") {

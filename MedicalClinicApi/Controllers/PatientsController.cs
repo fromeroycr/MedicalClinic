@@ -37,7 +37,8 @@ namespace MedicalClinicApi.Controllers
                     {
                         PatientID = patient.PatientID,
                         Age = patient.Age,
-                        Name = patient.Name
+                        Name = patient.Name,
+                        Gender = patient.Gender
                     }
                     );
 

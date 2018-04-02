@@ -20,27 +20,27 @@ namespace MedicalClinicDataAccess.DAL
             context.SaveChanges();
 
 
-            var pacients = new List<Patient>
-            {
-                new Patient{ PatientID = 1, Name="Bob Ramirez", Age = 30, Gender = Gender.Male, Appointments = null   },
-                new Patient{ PatientID = 2, Name="Carlos Venegas", Age = 25, Gender = Gender.Male, Appointments = null   },
-                new Patient{ PatientID = 3, Name="Daniela Alfaro", Age = 20, Gender = Gender.Female, Appointments = null   },
-                new Patient{ PatientID = 4, Name="Lucas", Age = 20, Gender = Gender.Male, Appointments = null   }
-            };
+            //var pacients = new List<Patient>
+            //{
+            //    new Patient{ PatientID = 1, Name="Bob Ramirez", Age = 30, Gender = Gender.Male, Appointments = null   },
+            //    new Patient{ PatientID = 2, Name="Carlos Venegas", Age = 25, Gender = Gender.Male, Appointments = null   },
+            //    new Patient{ PatientID = 3, Name="Daniela Alfaro", Age = 20, Gender = Gender.Female, Appointments = null   },
+            //    new Patient{ PatientID = 4, Name="Lucas", Age = 20, Gender = Gender.Male, Appointments = null   }
+            //};
 
-            pacients.ForEach(patient => context.Patients.Add(patient));
-            context.SaveChanges();
+            //pacients.ForEach(patient => context.Patients.Add(patient));
+            //context.SaveChanges();
 
 
-            var appointments = new List<Appointment>
-            {
-                new Appointment{PatientID=1, AppointmentTypeID = 1, Date = new DateTime(2018, 3, 17) },
-                new Appointment{PatientID=2, AppointmentTypeID = 2, Date = new DateTime(2018, 4, 17) },
-                new Appointment{PatientID=3, AppointmentTypeID = 3, Date = new DateTime(2018, 5, 17) },
-                new Appointment{PatientID=4, AppointmentTypeID = 4, Date = new DateTime(2018, 6, 17) }
-            };
-            appointments.ForEach(a => context.Appointments.Add(a));
-            context.SaveChanges();
+            //var appointments = new List<Appointment>
+            //{
+            //    new Appointment{PatientID=1, AppointmentTypeID = 1, Date = new DateTime(2018, 3, 17) },
+            //    new Appointment{PatientID=2, AppointmentTypeID = 2, Date = new DateTime(2018, 4, 17) },
+            //    new Appointment{PatientID=3, AppointmentTypeID = 3, Date = new DateTime(2018, 5, 17) },
+            //    new Appointment{PatientID=4, AppointmentTypeID = 4, Date = new DateTime(2018, 6, 17) }
+            //};
+            //appointments.ForEach(a => context.Appointments.Add(a));
+            //context.SaveChanges();
         }
     }
 }

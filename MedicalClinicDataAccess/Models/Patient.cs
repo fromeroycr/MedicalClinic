@@ -7,7 +7,7 @@ namespace MedicalClinicDataAccess.Models
 
     public class Patient
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PatientID { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
