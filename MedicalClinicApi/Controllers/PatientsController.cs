@@ -97,14 +97,18 @@ namespace MedicalClinicApi.Controllers
 
         // POST: api/Patient
         [ResponseType(typeof(Patient))]
-        public IHttpActionResult PostPatient(Patient patient)
+        public HttpResponseMessage PostPatient(Patient patient)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
             ResponseModel responseModel = new ResponseModel();
+
+            if (!ModelState.IsValid)
+            {
+                return new HttpResponseMessage
+                {                     
+                    StatusCode = HttpStatusCode.BadRequest
+                };
+            }            
 
             try
             {
@@ -114,15 +118,15 @@ namespace MedicalClinicApi.Controllers
             {
                 if (PatientExists(patient.PatientID))
                 {
-                    return Conflict();
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, responseModel.Message);
                 }
                 else
                 {
-                    throw;
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, responseModel.Message);
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = patient.PatientID }, patient);
+            return Request.CreateResponse(HttpStatusCode.OK, responseModel.Message);
         }
 
         // DELETE: api/Patients/5
