@@ -55,6 +55,14 @@
                 </td>
             </tr>
             <tr>
+                <td><b>Gender</b></td>
+                <td>
+                    <select ng-model="selectedGender">
+                        <option ng-repeat="g in Genders" value="{{g.id}}"> {{g.description}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
                 <td><b>Age</b></td>
                 <td>
                     <input type="text" ng-model="PatientAge" />

@@ -1,6 +1,13 @@
 ﻿app.controller("myCntrl", function ($scope, $http, myService) {
 
     $scope.divPatient = false;
+    
+    $scope.Genders = [ 
+        { id: "0", description: "Masculino" },
+        { id: "1", description: "Femenino" }
+    ];
+
+    $scope.selectedGender = 1;
 
     GetAllPatient();
     //To Get All Records 
@@ -13,22 +20,10 @@
         //    $scope.patients = response.data;            
         //}, function () {
         //    alert('Error in getting records');
-        //});
-
-        /*
-        $http.get('http://localhost:50186/api/Patients/GetPatients').success(function (data) {
-            debugger;
-            scope.patients = data;
-
-        }).error(function (data) {
-                debugger;
-                alert('Error in getting records');
-        });*/
+        //});        
 
         $http.get('http://localhost:50186/api/Patients/GetPatients').then(
             function successCallback(response) {
-            // this callback will be called asynchronously
-            // when the response is available                               
                 $scope.patients = response.data;
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -62,7 +57,7 @@
         var Patient = {
             PatientID: $scope.PatientID,
             Name: $scope.PatientName,
-            Gender: 1,
+            Gender: $scope.selectedGender,
             Age: $scope.PatientAge
         };
         var getAction = $scope.Action;
@@ -82,11 +77,15 @@
                 alert('Error in updating patient');
             });
         } else {
+
             var getData = myService.AddPatient(Patient);
+
             getData.then(function (msg) {
                 GetAllPatient();
+                debugger;
                 alert(msg.data);
                 $scope.divPatient = false;
+
             }, function () {
                 alert('Error in adding record');
             });
