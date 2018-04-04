@@ -43,5 +43,16 @@
         });
         return response;
     }
+
+    this.deletePatient = function (Patient) {
+
+        var response = $http({
+            method: "delete",
+            url: PatientsAPIUrl + "/DeletePatient" + "/" + PatientID,
+            data: JSON.stringify(Patient),
+            dataType: "json"
+        });
+        return response;
+    }
     
 })
