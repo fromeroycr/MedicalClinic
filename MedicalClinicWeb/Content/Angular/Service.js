@@ -44,11 +44,11 @@
         return response;
     }
 
-    this.deletePatient = function (Patient) {
+    this.DeletePatient = function (Patient) {
 
         var response = $http({
             method: "delete",
-            url: PatientsAPIUrl + "/DeletePatient" + "/" + PatientID,
+            url: PatientsAPIUrl + "/DeletePatient" + "/" + Patient.PatientID,
             data: JSON.stringify(Patient),
             dataType: "json"
         });

@@ -99,7 +99,7 @@
     }
 
     $scope.deletePatient = function (Patient) {
-        var getData = myService.DeleteEmp(Patient.Id);
+        var getData = myService.DeletePatient(Patient);
         getData.then(function (msg) {
             GetAllPatient();
             alert('Patient Deleted');
