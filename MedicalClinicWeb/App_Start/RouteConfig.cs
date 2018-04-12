@@ -17,7 +17,7 @@ namespace MedicalClinicWeb
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 //url: "{*anything}",
-                defaults: new { controller = "Patients", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -1,89 +1,97 @@
 ﻿<div ng-controller="myCntrl">
 
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />    
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <div class="container">
 
 
-    <h1> Patient Details Page</h1>
-
-    <br />
-
-    <input type="button" class="btnAdd" value=" Add Patient" ng-click="AddPatientDiv()" />
-
-    <div class="divList">
-        <p class="divHead">Patient List</p>
-        <table cellpadding="12" class="table table-bordered table-hover">
-            <tr>
-                <td><b>ID</b></td>
-                <td><b>Name</b></td>
-                <td><b>Gender</b></td>
-                <td><b>Age</b></td>
-                <td><b>Actions</b></td>
-            </tr>
-            <tr ng-repeat="patient in patients">
-                <td>
-                    {{patient.PatientID}}
-                </td>
-                <td>
-                    {{patient.Name}}
-                </td>
-                <td>
-                    <span ng-if="patient.Gender == '0'">
-                        Male
-                    </span>
-                    <span ng-if="patient.Gender == '1'">
-                        Female
-                    </span>
-                    
-                </td>
-                <td>
-                    {{patient.Age}}
-                </td>
-
-                <td>
-                    <span ng-click="editPatient(patient)" class="btnAdd">Edit</span>
-                    <span ng-click="deletePatient(patient)" class="btnRed">Delete</span>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div ng-show="divPatient">
-        <p class="divHead">{{Action}} Patient</p>
-        <table>
-            <tr>
-                <td><b>Id</b></td>
-                <td>
-                    <input type="text" disabled="disabled" ng-model="PatientId" />
-                </td>
-            </tr>
-            <tr>
-                <td><b>Name</b></td>
-                <td>
-                    <input type="text" ng-model="PatientName" />
-                </td>
-            </tr>
-            <tr>
-                <td><b>Gender</b></td>
-                <td>
-                    <select ng-model="selectedGender">
-                        <option ng-repeat="g in Genders" value="{{g.value}}"> {{g.name}}</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><b>Age</b></td>
-                <td>
-                    <input type="text" ng-model="PatientAge" />
-                </td>
-            </tr>
+        <div class="panel panel-default">
             
-            <tr>
-                <td colspan="2">
-                    <input type="button" class="btnAdd" value="Save" ng-click="AddUpdatePatient()" />
-                </td>
-            </tr>
-        </table>
+            <div class="panel-body">                             
+                
+                <div class="divList">
+                    <h3> Patient List </h3>
+
+                    <input type="button" class="btn btn-sm btn-primary" value=" Add Patient" ng-click="AddPatientDiv()" />
+                    <br/>
+
+                    <table cellpadding="12" class="table table-bordered table-hover">
+                        <tr>
+                            <td><b>ID</b></td>
+                            <td><b>Name</b></td>
+                            <td><b>Gender</b></td>
+                            <td><b>Age</b></td>
+                            <td><b>Actions</b></td>
+                        </tr>
+                        <tr ng-repeat="patient in patients">
+                            <td>
+                                {{patient.PatientID}}
+                            </td>
+                            <td>
+                                {{patient.Name}}
+                            </td>
+                            <td>
+                                <span ng-if="patient.Gender == '0'">
+                                    Male
+                                </span>
+                                <span ng-if="patient.Gender == '1'">
+                                    Female
+                                </span>
+
+                            </td>
+                            <td>
+                                {{patient.Age}}
+                            </td>
+
+                            <td>
+                                <span ng-click="editPatient(patient)" class="btn btn-sm btn-primary">Edit</span>
+                                <span ng-click="deletePatient(patient)" class="btn btn-sm btn-primary">Delete</span>
+                                <a href="#!appointments" class="btn btn-sm btn-primary">Appointments</a>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div ng-show="divPatient">
+                    <p class="divHead">{{Action}} Patient</p>
+                    <table>
+                        <tr>
+                            <td><b>Id</b></td>
+                            <td>
+                                <input type="text" disabled="disabled" ng-model="PatientId" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Name</b></td>
+                            <td>
+                                <input type="text" ng-model="PatientName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Gender</b></td>
+                            <td>
+                                <select ng-model="selectedGender">
+                                    <option ng-repeat="g in Genders" value="{{g.value}}"> {{g.name}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Age</b></td>
+                            <td>
+                                <input type="text" ng-model="PatientAge" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <input type="button" class="btn btn-sm btn-primary" value="Save" ng-click="AddUpdatePatient()" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        
     </div>
-</div>
+

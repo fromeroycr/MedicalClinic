@@ -41,7 +41,7 @@
             $scope.PatientID = Patient.PatientID;
             $scope.PatientName = Patient.Name;
             $scope.PatientAge = Patient.Age;
-            debugger;
+            
             $scope.selectedGender = String(Patient.Gender);            
             $scope.Action = "Update";
             $scope.divPatient = true;
