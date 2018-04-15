@@ -5,7 +5,7 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when("/patients", {
             templateUrl: "../patients/index",
-            controller: 'myCntrl'
+            controller: 'patientsController'
         })
         .when("/appointments", {
             templateUrl: "../appointments/appointment",
@@ -13,13 +13,7 @@ app.config(function ($routeProvider) {
         })
         .when("/", {
             templateUrl: "../patients/index",
-            controller: 'myCntrl'
+            controller: 'patientsController'
         });
 });
 
-
-
-app.controller("appointmentController", function ($scope) {
-    $scope.FirstName = "Test";
-    $scope.LastName = "Test";
-})

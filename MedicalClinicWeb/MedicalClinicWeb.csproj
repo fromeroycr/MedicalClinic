@@ -170,8 +170,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Angular\Controller.js" />
+    <Content Include="Content\Angular\AppointmentController.js" />
     <Content Include="Content\Angular\Module.js" />
+    <Content Include="Content\Angular\PatientsController.js" />
+    <Content Include="Content\Angular\PatientsService.js" />
     <Content Include="Content\Angular\Service.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />

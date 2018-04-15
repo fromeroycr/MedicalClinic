@@ -1,72 +1,62 @@
-﻿app.controller("myCntrl", function ($scope, $http, myService) {
+﻿app.controller("patientsController", function ($scope, $http, patientsService) {
 
     $scope.divPatient = false;
-    
-    $scope.Genders = [ 
+
+    $scope.Genders = [
         { value: "0", name: "Masculino" },
         { value: "1", name: "Femenino" }
     ];
 
     GetAllPatient();
     //To Get All Records 
-    
+
     function GetAllPatient() {
-        
-        //var getData = myService.getPatients();
-        
-        //getData.then(function (response) {
-        //    $scope.patients = response.data;            
-        //}, function () {
-        //    alert('Error in getting records');
-        //});        
 
-        $http.get('http://localhost:50186/api/Patients/GetPatients').then(
-            function successCallback(response) {
-                $scope.patients = response.data;
-        }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-            alert(response);
+        var getData = patientsService.getPatients();
+
+        getData.then(function (response) {
+            $scope.patients = response.data;            
+        }, function () {
+            alert('Error in getting patients records');
         });
-
     }
 
     $scope.editPatient = function (Patient) {
 
-        var getData = myService.getPatient(Patient.PatientID);
+        var getData = patientsService.getPatient(Patient.PatientID);
 
         getData.then(function (patient) {
-            
+
             $scope.Patient = patient.data;
             $scope.PatientID = Patient.PatientID;
             $scope.PatientName = Patient.Name;
             $scope.PatientAge = Patient.Age;
-            
-            $scope.selectedGender = String(Patient.Gender);            
+
+            $scope.selectedGender = String(Patient.Gender);
             $scope.Action = "Update";
             $scope.divPatient = true;
         },
-            function () {
-                alert('Error in getting patient');
-            });
+        function () {
+            alert('Error in getting patient');
+        });
     }
 
     $scope.AddUpdatePatient = function () {
-        
+
         var Patient = {
             PatientID: $scope.PatientID,
             Name: $scope.PatientName,
             Gender: $scope.selectedGender,
             Age: $scope.PatientAge
-        };        
+        };
 
         var getAction = $scope.Action;
 
         if (getAction == "Update") {
             Patient.PatientID = $scope.PatientID;
-            var getData = myService.updatePatient(Patient);
+            var getData = patientsService.updatePatient(Patient);
 
-            
+
             getData.then(function (msg) {
                 debugger;
                 GetAllPatient();
@@ -78,7 +68,7 @@
             });
         } else {
 
-            var getData = myService.AddPatient(Patient);
+            var getData = patientsService.AddPatient(Patient);
 
             getData.then(function (msg) {
                 GetAllPatient();
@@ -99,7 +89,7 @@
     }
 
     $scope.deletePatient = function (Patient) {
-        var getData = myService.DeletePatient(Patient);
+        var getData = patientsService.DeletePatient(Patient);
         getData.then(function (msg) {
             GetAllPatient();
             alert('Patient Deleted');

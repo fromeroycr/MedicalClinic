@@ -6,23 +6,21 @@
 
     <title>@ViewBag.Title</title>
 
-
-
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
-    <script src="~/Content/Angular/Module.js"></script>
-    <script src="~/Content/Angular/Service.js"></script>
-    <script src="~/Content/Angular/Controller.js"></script>
+
+    <script src="~/Content/Angular/Module.js"></script>    
+    <script src="~/Content/Angular/PatientsService.js"></script>
+    <script src="~/Content/Angular/PatientsController.js"></script>
+    <script src="~/Content/Angular/AppointmentController.js"></script>
+    
     @Scripts.Render("~/bundles/jquery")
-
-
-
-    @RenderSection("scripts", required: false)
-
+    @RenderSection("scripts", required: false)    
     @Styles.Render("~/Content/css")
+
     <style>
     </style>
 </head>
