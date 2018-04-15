@@ -12,13 +12,16 @@
 
     function GetAllPatient() {
 
-        var getData = patientsService.getPatients();
+        var getData = patientsService.getPatients();      
 
-        getData.then(function (response) {
-            $scope.patients = response.data;            
-        }, function () {
-            alert('Error in getting patients records');
-        });
+        $scope.patients = getData;        
+
+        //getData.then(function (response) {
+        //    debugger;
+        //    $scope.patients = response;            
+        //}, function () {
+        //    alert('Error in getting patients records');
+        //});
     }
 
     $scope.editPatient = function (Patient) {

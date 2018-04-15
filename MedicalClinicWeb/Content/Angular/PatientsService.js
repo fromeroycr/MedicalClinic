@@ -4,10 +4,22 @@
     
     this.getPatients = function () {
 
-        var response = $http.get('http://localhost:50186/api/Patients/GetPatients');
-        console.log(response);
+        //var response = $http.get('http://localhost:50186/api/Patients/GetPatients'); 
 
-        return response;
+        var result = null;
+        $.ajax({
+            url: 'http://localhost:50186/api/Patients/GetPatients',
+            type: 'get',
+            dataType: 'json',
+            cache: false,
+            
+            success: function (data) {
+                result = data;
+            },            
+            async: false
+        });
+
+        return result;        
     };
     
     this.getPatient = function (PatientID) {
