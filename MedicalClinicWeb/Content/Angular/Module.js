@@ -4,16 +4,16 @@
 app.config(function ($routeProvider) {
     $routeProvider
         .when("/patients", {
-            templateUrl: "../patients/index",
+            templateUrl: "/Content/views/patients.html",
             controller: 'patientsController'
         })
         .when("/appointments/:idPatient", {            
-            templateUrl: "../appointments/appointment",
+            templateUrl: "../Content/views/appointment.html",
             controller: 'appointmentController',
             controllerAs: "vm"
         })        
         .when("/", {
-            templateUrl: "../patients/index",
+            templateUrl: "/Content/views/patients.html",
             controller: 'patientsController'
         });
 });
