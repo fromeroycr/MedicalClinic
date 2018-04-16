@@ -40,7 +40,8 @@ namespace AutoFacWithWebAPI.App_Start
                    .As<DbContext>()
                    .InstancePerRequest();
             
-            builder.RegisterType<PatientsRepository>().As<IPatientsRepository>();            
+            builder.RegisterType<PatientsRepository>().As<IPatientsRepository>();
+            builder.RegisterType<AppointmentTypesRepository>().As<IAppointmentTypesRepository>();
 
             //Set the dependency resolver to be Autofac.  
             Container = builder.Build();

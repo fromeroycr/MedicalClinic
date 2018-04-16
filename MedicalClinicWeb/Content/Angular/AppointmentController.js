@@ -1,6 +1,6 @@
 ﻿
 
-app.controller("appointmentController", function ($routeParams, $scope, patientsService) {
+app.controller("appointmentController", function ($routeParams, $scope, patientsService, appointmentTypesService) {
 
     var vm = this;
 
@@ -13,6 +13,9 @@ app.controller("appointmentController", function ($routeParams, $scope, patients
     getData.then(function (patient) {
         
         vm.patientName = patient.data.Name;
+
+        vm.appointmentTypes = appointmentTypesService.getAppointmentTypes();
+        vm.appointmentType = vm.appointmentTypes[0];          
     },
     function () {
        alert('Error in getting patient');

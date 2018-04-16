@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Angular\AppointmentController.js" />
+    <Content Include="Content\Angular\AppointmentTypesService.js" />
     <Content Include="Content\Angular\Module.js" />
     <Content Include="Content\Angular\PatientsController.js" />
     <Content Include="Content\Angular\PatientsService.js" />
@@ -1039,7 +1040,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Content\views\Appointment.html" />
+    <Content Include="Content\views\appointment.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
