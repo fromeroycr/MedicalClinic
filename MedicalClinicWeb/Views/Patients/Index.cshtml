@@ -43,7 +43,8 @@
                             <td>
                                 <span ng-click="editPatient(patient)" class="btn btn-sm btn-primary">Edit</span>
                                 <span ng-click="deletePatient(patient)" class="btn btn-sm btn-primary">Delete</span>
-                                <a href="#!appointments" class="btn btn-sm btn-primary">Create Appointment</a>
+                                <!--<a href="#!appointments" class="btn btn-sm btn-primary">Create Appointment</a> -->
+                                <a ng-href="#!appointments/{{patient.PatientID}}" class="btn btn-sm btn-primary">Create Appointment</a>
                             </td>
                         </tr>
                     </table>

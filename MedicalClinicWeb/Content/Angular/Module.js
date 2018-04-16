@@ -7,9 +7,16 @@ app.config(function ($routeProvider) {
             templateUrl: "../patients/index",
             controller: 'patientsController'
         })
-        .when("/appointments", {
+        .when("/appointments/:idPatient", {            
             templateUrl: "../appointments/appointment",
-            controller: 'appointmentController'
+            controller: 'appointmentController',
+            controllerAs: "vm"
+        })
+        .when("/appointments", {
+            controller: 'appointmentController',
+            controllerAs: "vm",
+            templateUrl: "../appointments/appointment"
+
         })
         .when("/", {
             templateUrl: "../patients/index",

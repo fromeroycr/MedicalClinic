@@ -4,10 +4,18 @@ app.controller("appointmentController", function ($routeParams, $scope, patients
 
     var vm = this;
 
-    vm.patientId = $routeParams.patientId;
+    vm.idPatient = $routeParams.idPatient;
 
-    var patient = patientsService.getPatient(Patient.PatientID);
+    
+    var getData = patientsService.getPatient(vm.idPatient);
+    
 
-    vm.patientName = patient.patientName;
+    getData.then(function (patient) {
+        
+        vm.patientName = patient.data.Name;
+    },
+    function () {
+       alert('Error in getting patient');
+    });   
 
 })
