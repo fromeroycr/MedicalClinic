@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Angular\AppointmentController.js" />
+    <Content Include="Content\Angular\AppointmentsService.js" />
     <Content Include="Content\Angular\AppointmentTypesService.js" />
     <Content Include="Content\Angular\Module.js" />
     <Content Include="Content\Angular\PatientsController.js" />

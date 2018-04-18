@@ -1,7 +1,7 @@
 ﻿
 app.service("appointmentTypesService", function ($http) {
 
-    var apointmentTypesAPIUrl = 'http://localhost:50186/api/AppointmentTypes/GetAppointmentTypes'; 
+    var apointmentTypesAPIUrl = 'http://localhost:50186/api/AppointmentTypes/GetAppointmentTypes';
 
     this.getAppointmentTypes = function () {
 

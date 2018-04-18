@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\AppointmentsRepository.cs" />
     <Compile Include="Implementations\AppointmentTypesRepository.cs" />
     <Compile Include="Implementations\PatientsRepository.cs" />
+    <Compile Include="Interfaces\IAppointmentsRepository.cs" />
     <Compile Include="Interfaces\IAppointmentTypesRepository.cs" />
     <Compile Include="Interfaces\IPatientsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
