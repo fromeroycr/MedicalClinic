@@ -12,9 +12,9 @@
 
     function GetAllPatient() {
 
-        var getData = patientsService.getPatients();      
+        //var getData = patientsService.getPatients();      
 
-        $scope.patients = getData;        
+        //$scope.patients = getData;        
 
         //getData.then(function (response) {
         //    debugger;
@@ -22,6 +22,18 @@
         //}, function () {
         //    alert('Error in getting patients records');
         //});
+
+        $http.get('http://localhost:50186/api/Patients/GetPatients')
+            // on success...
+            .then(function (result) {
+                foo = result.data;
+                response = result.data;
+                $scope.patients = result.data;                
+            },
+            // on failure...
+            function (errorMsg) {
+                console.log('Something went wrong loading patients list: ' + errorMsg);
+            });
     }
 
     $scope.editPatient = function (Patient) {

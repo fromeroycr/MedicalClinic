@@ -9,9 +9,11 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using System.Data.Entity;
 
 
 namespace MedicalClinicApi.Controllers
@@ -28,39 +30,42 @@ namespace MedicalClinicApi.Controllers
         }
 
         // GET: api/Patients        
+        //[HttpGet]
+        //[Route("api/Patients/GetPatients")]
+        //public List<PatientModelViewModel> GetPatients()
+        //{
+        //    var result = (from patient in _patientsRepository.GetPatients()
+        //            select new PatientModelViewModel
+        //            {
+        //                PatientID = patient.PatientID,
+        //                Age = patient.Age,
+        //                Name = patient.Name,
+        //                Gender = patient.Gender
+        //            }
+        //            );
+
+        //    return result.ToList();
+        //}
+
         [HttpGet]
         [Route("api/Patients/GetPatients")]
-        public List<PatientModelViewModel> GetPatients()
+        public async  Task<IEnumerable<PatientModelViewModel>> GetPatients()
         {
-            var result = (from patient in _patientsRepository.GetPatients()
-                    select new PatientModelViewModel
-                    {
-                        PatientID = patient.PatientID,
-                        Age = patient.Age,
-                        Name = patient.Name,
-                        Gender = patient.Gender
-                    }
-                    );
+            
+            var patientsList = await ( _patientsRepository.GetPatients() );
 
-            return result.ToList();
-        }
 
-        /*
-        [HttpGet]
-        [Route("api/Patients/GetPatients")]
-        public HttpResponseMessage GetPatients()
-        {
-            var result = (from patient in _patientsRepository.GetPatients()
+            var result = (from patient in patientsList
                           select new PatientModelViewModel
                           {
                               PatientID = patient.PatientID,
                               Age = patient.Age,
-                              Name = patient.Name
+                              Name = patient.Name,
+                              Gender = patient.Gender
                           }
                     );
-
-            return Request.CreateResponse(HttpStatusCode.OK, "GetPatients Successfully");
-        }*/
+            return result;
+        }        
 
         [HttpGet]
         [Route("api/Patients/GetPatient/{id}")]
@@ -98,7 +103,7 @@ namespace MedicalClinicApi.Controllers
 
         // POST: api/Patient
         [ResponseType(typeof(Patient))]
-        public HttpResponseMessage PostPatient(Patient patient)
+        public async Task<HttpResponseMessage> PostPatient(Patient patient)
         {
 
             ResponseModel responseModel = new ResponseModel();
@@ -117,7 +122,7 @@ namespace MedicalClinicApi.Controllers
             }
             catch (DbUpdateException)
             {
-                if (PatientExists(patient.PatientID))
+                if (await PatientExists(patient.PatientID))
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, responseModel.Message);
                 }
@@ -155,9 +160,12 @@ namespace MedicalClinicApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PatientExists(int id)
+        private async Task<bool> PatientExists(int id)
         {
-            return _patientsRepository.GetPatients().Count(p => p.PatientID == id) > 0;
+            var patientsList = await(_patientsRepository.GetPatients());
+
+            return patientsList.Count(p => p.PatientID == id) > 0;
+            //return _patientsRepository.GetPatients().Count(p => p.PatientID == id) > 0;
         }
     }
 }

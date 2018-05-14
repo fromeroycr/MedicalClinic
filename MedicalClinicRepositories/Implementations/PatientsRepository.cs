@@ -69,9 +69,9 @@ namespace MedicalClinicRepositories.Implementations
             return patient;                       
         }
 
-        public IEnumerable<Patient> GetPatients()
+        public async Task<IEnumerable<Patient>>  GetPatients()
         {
-            return db.Patients.ToList();
+            return await db.Patients.ToListAsync();
         }
 
         public ResponseModel UpdatePatient(Patient patientUpdated)

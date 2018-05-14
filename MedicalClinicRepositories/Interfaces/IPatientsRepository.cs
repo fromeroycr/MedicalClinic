@@ -10,7 +10,7 @@ namespace MedicalClinicRepositories.Interfaces
 {
     public interface IPatientsRepository
     {
-        IEnumerable<Patient> GetPatients();
+        Task<IEnumerable<Patient>> GetPatients();
         Patient GetPatient(int idPatient);
         ResponseModel CreatePatient(Patient patient);
         ResponseModel UpdatePatient(Patient patient);

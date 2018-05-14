@@ -4,25 +4,7 @@
 
     this.createAppointment = function (appointment) {
 
-        var result = null;
-
-        //$.ajax(
-        //    {
-        //        url: appointmentsServiceUrl,
-        //        type: 'post',
-        //        datatype: 'json',
-        //        data: JSON.stringify(appointment),
-        //        cache: false,
-        //        success: function (data) {
-
-        //            result = data;
-
-        //        },
-        //        error: function () {
-        //            alert('Error setting appointment');
-        //        }
-        //    }
-        //);
+        var result = null;        
 
         var response = $http({
             method: "post",
