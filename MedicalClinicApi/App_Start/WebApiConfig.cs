@@ -2,15 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace MedicalClinicApi
 {
     public static class WebApiConfig
     {
+        private static string GetAllowedOrigins()
+        {
+            //Make a call to the database to get allowed origins and convert to a comma separated string
+            return "http://localhost:49715,http://localhost:4200";
+        }
+
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            config.EnableCors();
+
+            string origins = GetAllowedOrigins();
+            var cors = new EnableCorsAttribute(origins, "*", "*");
+            config.EnableCors(cors);
+
+            //config.EnableCors();
 
             // Web API routes
             config.MapHttpAttributeRoutes();

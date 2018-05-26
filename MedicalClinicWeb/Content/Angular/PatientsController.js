@@ -20,7 +20,7 @@
         //    debugger;
         //    $scope.patients = response;            
         //}, function () {
-        //    alert('Error in getting patients records');
+        //    alert('Error in getting patients records');   
         //});
 
         $http.get('http://localhost:50186/api/Patients/GetPatients')

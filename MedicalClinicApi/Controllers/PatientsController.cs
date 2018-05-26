@@ -18,7 +18,9 @@ using System.Data.Entity;
 
 namespace MedicalClinicApi.Controllers
 {
-    [EnableCors(origins: "http://localhost:49715", headers: "*", methods: "*")]
+    
+
+    //[EnableCors(origins: "http://localhost:49715,http://localhost:4200", headers: "*", methods: "*")]    
     public class PatientsController : ApiController
     {
         private MedicalClinicContext db = new MedicalClinicContext();
@@ -26,6 +28,7 @@ namespace MedicalClinicApi.Controllers
 
         public PatientsController(IPatientsRepository patientsRepository)
         {
+            var value = System.Configuration.ConfigurationManager.AppSettings["PFUserName"];
             _patientsRepository = patientsRepository;
         }
 

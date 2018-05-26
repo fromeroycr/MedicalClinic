@@ -10,7 +10,7 @@ using System.Web.Http.Description;
 
 namespace MedicalClinicApi.Controllers
 {
-    [EnableCors(origins: "http://localhost:49715", headers: "*", methods: "*")]
+    //[EnableCors(origins: "http://localhost:49715,http://localhost:4200", headers: "*", methods: "*")]
     public class AppointmentsController : ApiController
     {
         private IAppointmentsRepository _appointmentsRepository;
